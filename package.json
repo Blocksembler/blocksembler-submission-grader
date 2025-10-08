@@ -1,0 +1,31 @@
+{
+  "name": "blocksembler-submission-grader",
+  "version": "0.0.1",
+  "description": "",
+  "homepage": "https://github.com/Blocksembler/blocksembler-submission-grader#readme",
+  "bugs": {
+    "url": "https://github.com/Blocksembler/blocksembler-submission-grader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Blocksembler/blocksembler-submission-grader.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Florian Wörister",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.9",
+    "pg": "^8.16.3",
+    "process": "^0.11.10",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.10.7",
+    "@types/node": "^24.7.0",
+    "@types/pg": "^8.15.5"
+  }
+}
