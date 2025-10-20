@@ -2,8 +2,8 @@ import {BaseEmulator, Word} from "../architectures/emulator";
 import {BaseInstruction} from "../architectures/instructions";
 import {Instruction} from "../architectures/types/emulator";
 import {TestCase} from "../db/gradingJobs";
+import {MAX_STEPS} from "../config";
 
-const MAX_STEPS = parseInt(process.env.BLOCKSEMBLER_GRADER_MAX_STEPS || "1000000");
 
 const prettyPrintEmulator = (emulator: BaseEmulator) => {
     let str = "EMULATOR STATE\n";
@@ -61,6 +61,7 @@ export class Grader {
 
         if (stepCount == MAX_STEPS) {
             console.warn("Maximum step count reached");
+            return false;
         }
 
         console.debug(prettyPrintEmulator(this.emulator))
