@@ -4,8 +4,7 @@ import {BaseInstruction} from "../architectures/instructions";
 import {BaseEmulator} from "../architectures/emulator";
 import {BaseParser} from "../architectures/parser";
 import {Grader} from "../grader/grader";
-
-const GRADING_JOB_QUEUE = process.env.GRADING_JOB_ROUTING_KEY || "grading-jobs";
+import {GRADING_JOB_QUEUE} from "../config";
 
 
 export interface GradingJobMessage {

@@ -1,6 +1,5 @@
 import amqp, {Channel, ChannelModel} from "amqplib";
-
-const RABBITMQ_URL = process.env.RABBITMQ_URL || "amqp://blocksembler:blocksembler@localhost";
+import {RABBIT_MQ_URI} from "../config";
 
 
 let connection: ChannelModel | null = null;
@@ -9,7 +8,7 @@ let channel: Channel | null = null;
 export async function getChannel(): Promise<Channel> {
     if (channel) return channel;
 
-    connection = await amqp.connect(RABBITMQ_URL);
+    connection = await amqp.connect(RABBIT_MQ_URI);
     channel = await connection.createChannel();
 
     await channel.prefetch(1);

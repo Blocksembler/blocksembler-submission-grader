@@ -1,8 +1,8 @@
 import {pluginRegistry} from "./architectures/pluginRegistry";
 import {closeConnection, getChannel} from "./mq/connection";
 import {SubmissionGrader} from "./mq/consumer";
+import {ARCHITECTURE} from "./config";
 
-const ARCHITECTURE = process.env.ARCHITECTURE || "anna";
 const architecturePlugin = pluginRegistry[ARCHITECTURE]
 
 
