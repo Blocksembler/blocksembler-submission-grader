@@ -1,5 +1,5 @@
-import {BaseEmulator, Word} from "../architectures/emulator";
-import {BaseInstruction} from "../architectures/instructions";
+import {BaseEmulator, Word} from "../emulator";
+import {BaseInstruction} from "../instructions";
 
 
 export interface InstructionFactory {
