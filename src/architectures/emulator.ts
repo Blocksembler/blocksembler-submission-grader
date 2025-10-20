@@ -1,4 +1,4 @@
-import type {Instruction, InstructionFactory, InterruptFunction, MemoryLocation} from '../types/emulator';
+import type {Instruction, InstructionFactory, InterruptFunction, MemoryLocation} from './types/emulator';
 
 
 export class BaseEmulator {

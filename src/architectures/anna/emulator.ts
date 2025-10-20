@@ -1,6 +1,6 @@
 import {BaseEmulator, ImmutableWord, Word} from "../emulator";
 import {AnnaInstructionFactory} from "./instructions";
-import {InterruptFunction} from "../../types/emulator";
+import {InterruptFunction} from "../types/emulator";
 
 export const addressSize = 16;
 
@@ -39,7 +39,7 @@ export class AnnaEmulator extends BaseEmulator {
                 return "";
             },
             "halt": (emulator: BaseEmulator): string => {
-                alert("The program terminated");
+                console.log("The program terminated");
                 emulator.halt();
                 return "";
             },

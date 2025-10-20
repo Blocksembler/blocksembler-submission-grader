@@ -1,6 +1,6 @@
 import {BaseInstruction} from "../instructions";
 import {BaseEmulator, Word} from "../emulator";
-import {MemoryLocation} from "../../types/emulator";
+import {MemoryLocation} from "../types/emulator";
 import {addressSize} from "./emulator";
 
 export class AnnaInstructionFactory {
@@ -163,9 +163,6 @@ class AnnaI8TypeInstruction extends AnnaBaseInstruction {
 
     toMachineCode() {
         const constructor = (this.constructor as typeof AnnaI8TypeInstruction);
-
-
-        console.log("imm", this.imm);
 
         let machineInstruction =
             constructor.getOpCode() + this.rd.toString(2).padStart(3, "0");

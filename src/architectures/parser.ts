@@ -1,5 +1,5 @@
 import {BaseInstruction, MultilineComment} from "./instructions";
-import {Instruction, InstructionFactory} from "../types/emulator";
+import {Instruction, InstructionFactory} from "./types/emulator";
 
 
 export class ParsingError extends Error {
