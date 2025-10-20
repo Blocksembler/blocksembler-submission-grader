@@ -2,7 +2,7 @@
 
 ## <img src="img/logo.png" alt="drawing" width="200"/>
 
-[![License: Unlicense](https://img.shields.io/badge/license-Unlicense-blue.svg)](http://unlicense.org/)
+[![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
 
 A node.js service that verifies the correctness of assembly
