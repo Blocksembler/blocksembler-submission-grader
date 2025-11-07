@@ -4,6 +4,8 @@ import {InterruptFunction} from "../types/emulator";
 
 export const addressSize = 16;
 
+export let mockUserInputs: Array<number> = [];
+
 export class AnnaEmulator extends BaseEmulator {
     constructor() {
         const registers = AnnaEmulator.setUpRegisters();
@@ -28,11 +30,11 @@ export class AnnaEmulator extends BaseEmulator {
     static setUpInterrupts(): Record<string, InterruptFunction> {
         return {
             "input": (_emulator: BaseEmulator): string => {
-                let userInput = prompt("Enter a value");
-                if (userInput === null) {
-                    return "0";
-                }
-                return userInput;
+                const nextVal = mockUserInputs.shift();
+
+                if (!nextVal) return "";
+
+                return nextVal.toString();
             },
             "output": (emulator: BaseEmulator, value: string): string => {
                 emulator.print(value);

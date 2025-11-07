@@ -3,6 +3,7 @@ import {BaseInstruction} from "../architectures/instructions";
 import {Instruction} from "../architectures/types/emulator";
 import {TestCase} from "../db/gradingJobs";
 import {MAX_STEPS} from "../config";
+import {mockUserInputs} from "../architectures/anna/emulator";
 
 
 const prettyPrintEmulator = (emulator: BaseEmulator) => {
@@ -73,6 +74,10 @@ export class Grader {
         this.emulator.resetMemory();
         this.emulator.resetRegisters();
         this.emulator.isTerminated = false;
+
+        tc.user_input
+            .map(val => parseInt(val))
+            .forEach(intVal => mockUserInputs.push(intVal));
 
         for (const [key, val] of Object.entries(tc.precondition.registers)) {
             if (key in this.emulator.registers) {
