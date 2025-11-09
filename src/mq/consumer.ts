@@ -57,15 +57,12 @@ export class SubmissionGrader {
             let program: Array<BaseInstruction>;
 
             try {
-
-
                 program = this.parser.parseCode(gradingJob.solution_code, true);
                 logMessages.push("parsing successful");
             } catch (err) {
                 console.error("parsing failed:", err);
                 logMessages.push(`parsing failed: ${err}`);
                 await updateGradingJob(gradingJob.job_id, false, logMessages);
-                this.channel.ack(msg);
                 this.channel.ack(msg);
                 return;
             }

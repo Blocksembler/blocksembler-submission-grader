@@ -4,7 +4,6 @@
 
 [![License: CC BY-NC-ND 4.0](https://img.shields.io/badge/License-CC_BY--NC--ND_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
 
-
 A node.js service that verifies the correctness of assembly
 programms. The application consumes `GradingJobMessages` from
 a _RabbitMQ_ queue, which consists of an assembly source code and
@@ -48,13 +47,14 @@ started, follow these steps:
 
 ### Environment Variables
 
-| Name                             | Default                                                        | Description                                                               |
-|----------------------------------|----------------------------------------------------------------|---------------------------------------------------------------------------|
-| `BLOCKSEMBLER_ARCHITECTURE`      | `anna`                                                         | Identifier of the architecture plugin to load (e.g., `anna`).             |
-| `BLOCKSEMBLER_DB_URI`            | `postgres://postgres:postgres@localhost/blocksembler`          | Connection string for the PostgreSQL database used by Blocksembler.       |
-| `BLOCKSEMBLER_MQ_URI`            | `amqp://blocksembler:blocksembler@localhost:5672/blocksembler` | Connection URI for the RabbitMQ message broker used by Blocksembler.      |
-| `BLOCKSEMBLER_GRADING_JOB_QUEUE` | `grading-jobs`                                                 | Name of the RabbitMQ queue from which grading jobs are consumed.          |
-| `BLOCKSEMBLER_GRADER_MAX_STEPS`  | `100000`                                                       | Maximum number of execution steps allowed per grading job (safety limit). |
+| Name                                     | Default                                                        | Description                                                               |
+|------------------------------------------|----------------------------------------------------------------|---------------------------------------------------------------------------|
+| `BLOCKSEMBLER_ARCHITECTURE`              | `anna`                                                         | Identifier of the architecture plugin to load (e.g., `anna`).             |
+| `BLOCKSEMBLER_DB_URI`                    | `postgres://postgres:postgres@localhost/blocksembler`          | Connection string for the PostgreSQL database used by Blocksembler.       |
+| `BLOCKSEMBLER_MQ_URI`                    | `amqp://blocksembler:blocksembler@localhost:5672/blocksembler` | Connection URI for the RabbitMQ message broker used by Blocksembler.      |
+| `BLOCKSEMBLER_GRADING_JOB_QUEUE`         | `grading-jobs`                                                 | Name of the RabbitMQ queue from which grading jobs are consumed.          |
+| `BLOCKSEMBLER_GRADER_MAX_STEPS`          | `100000`                                                       | Maximum number of execution steps allowed per grading job (safety limit). |
+| `BLOCKSEMBLER_FAILED_SUBMISSION_PENALTY` | `1000 * 60`                                                    | Penalty for failed submissions (in milliseconds).                         |
 
 ## Contributing
 
