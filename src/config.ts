@@ -6,3 +6,4 @@ export const RABBIT_MQ_URI = process.env.BLOCKSEMBLER_MQ_URI || 'amqp://blocksem
 export const GRADING_JOB_QUEUE = process.env.BLOCKSEMBLER_GRADING_JOB_QUEUE || "grading-jobs";
 
 export const MAX_STEPS = parseInt(process.env.BLOCKSEMBLER_GRADER_MAX_STEPS || "100000");
+export const FAILED_SUBMISSION_PENALTY = parseInt(process.env.BLOCKSEMBLER_SUBMISSION_PENALTY || (1000 * 60).toString())
