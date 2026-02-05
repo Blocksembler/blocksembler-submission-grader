@@ -55,8 +55,15 @@ export class Grader {
 
         console.debug("Running test case");
 
+        let instructionTrace: Array<string> = [];
+
         while (!this.emulator.isTerminated && stepCount < MAX_STEPS) {
+            const currentPC = this.emulator.registers.pc.toUnsignedIntValue();
+            const nextInstruction = this.emulator.loadInstructionAt(currentPC);
+            instructionTrace.push(nextInstruction.toString().split(' ')[0]);
+
             this.emulator.executeSingleInstruction();
+
             stepCount++;
         }
 
@@ -67,7 +74,22 @@ export class Grader {
 
         console.debug(prettyPrintEmulator(this.emulator))
 
-        return this.checkPostCondition(tc);
+        let allExpectedInstructionsExecuted = true;
+
+        for (let mnemonic of tc.expected_instructions) {
+            if (!instructionTrace.includes(mnemonic)) {
+                allExpectedInstructionsExecuted = false;
+                console.debug(`expected instruction '${mnemonic}' was not executed!`);
+            }
+        }
+
+        let expectedOutputGenerated = JSON.stringify(tc.expected_output) === JSON.stringify(this.emulator.output);
+
+        if (!expectedOutputGenerated) {
+            console.debug(`Expected emulator output to be: [${tc.expected_output.toString()}] but was [${this.emulator.output.toString()}]`)
+        }
+
+        return expectedOutputGenerated && allExpectedInstructionsExecuted && this.checkPostCondition(tc);
     }
 
     private setupTestCasePrecondition(tc: TestCase) {

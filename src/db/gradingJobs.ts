@@ -21,6 +21,7 @@ export interface TestCase {
     "postcondition": SystemState,
     "user_input": Array<string>,
     "expected_output": Array<string>,
+    "expected_instructions": Array<string>,
 }
 
 export interface SystemState {
