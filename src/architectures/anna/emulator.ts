@@ -45,6 +45,10 @@ export class AnnaEmulator extends BaseEmulator {
                 emulator.halt();
                 return "";
             },
+            "alert": (emulator: BaseEmulator, value: string)=> {
+                console.log(value);
+                return "";
+            }
         };
     }
 }

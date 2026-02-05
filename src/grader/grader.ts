@@ -95,6 +95,7 @@ export class Grader {
     private setupTestCasePrecondition(tc: TestCase) {
         this.emulator.resetMemory();
         this.emulator.resetRegisters();
+        this.emulator.output = [];
         this.emulator.isTerminated = false;
 
         tc.user_input
