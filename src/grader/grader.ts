@@ -11,6 +11,12 @@ const prettyPrintEmulator = (emulator: BaseEmulator) => {
     for (const [key, val] of Object.entries(emulator.registers)) {
         str += `${key}: ${val.toSignedIntValue()} \n`;
     }
+
+    str += "\n";
+
+    str += "output: \n";
+    str += JSON.stringify(emulator.output, null, 2) + "\n";
+
     return str;
 }
 
@@ -95,7 +101,9 @@ export class Grader {
     private setupTestCasePrecondition(tc: TestCase) {
         this.emulator.resetMemory();
         this.emulator.resetRegisters();
-        this.emulator.output = [];
+        this.emulator.output.splice(0, this.emulator.output.length);
+        mockUserInputs.splice(0, mockUserInputs.length);
+
         this.emulator.isTerminated = false;
 
         tc.user_input
