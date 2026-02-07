@@ -63,7 +63,15 @@ export class Grader {
 
         let instructionTrace: Array<string> = [];
 
-        while (!this.emulator.isTerminated && stepCount < MAX_STEPS) {
+        let stepLimit = MAX_STEPS;
+
+        if (tc.step_limit && tc.step_limit > 0 && tc.step_limit < MAX_STEPS) {
+            stepLimit = tc.step_limit
+        }
+
+        console.log(`Step Limit: ${stepLimit}`);
+
+        while (!this.emulator.isTerminated && stepCount < stepLimit) {
             const currentPC = this.emulator.registers.pc.toUnsignedIntValue();
             const nextInstruction = this.emulator.loadInstructionAt(currentPC);
             instructionTrace.push(nextInstruction.toString().split(' ')[0]);
@@ -73,7 +81,7 @@ export class Grader {
             stepCount++;
         }
 
-        if (stepCount == MAX_STEPS) {
+        if (stepCount == stepLimit) {
             console.warn("Maximum step count reached");
             return false;
         }

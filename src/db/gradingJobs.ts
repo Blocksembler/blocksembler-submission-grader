@@ -22,6 +22,7 @@ export interface TestCase {
     "user_input": Array<string>,
     "expected_output": Array<string>,
     "expected_instructions": Array<string>,
+    "step_limit": number,
 }
 
 export interface SystemState {
