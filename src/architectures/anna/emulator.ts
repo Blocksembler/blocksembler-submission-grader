@@ -32,6 +32,8 @@ export class AnnaEmulator extends BaseEmulator {
             "input": (_emulator: BaseEmulator): string => {
                 const nextVal = mockUserInputs.shift();
 
+                if (nextVal === 0) return "0";
+
                 if (!nextVal) return "";
 
                 return nextVal.toString();

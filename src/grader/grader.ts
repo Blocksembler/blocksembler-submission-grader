@@ -54,12 +54,13 @@ export class Grader {
 
         console.debug(prettyPrintEmulator(this.emulator))
 
-
         this.emulator.loadProgram(this.program);
 
         let stepCount = 0;
 
         console.debug("Running test case");
+
+        console.debug(`user inputs: ${mockUserInputs}`)
 
         let instructionTrace: Array<string> = [];
 
