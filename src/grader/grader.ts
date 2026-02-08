@@ -151,7 +151,8 @@ export class Grader {
         for (const [key, val] of Object.entries(tc.postcondition.memory)) {
             if (key in this.emulator.memory) {
                 if (this.emulator.memory[parseInt(key)].value.toSignedIntValue() !== val) {
-                    console.info(`Memory at address ${key} has value ${this.emulator.memory[key].toSignedIntValue()} instead of ${val}`);
+
+                    console.info(`Memory at address ${key} has value ${this.emulator.memory[Number(key)]} instead of ${val}`);
                     return false;
                 }
             } else {
